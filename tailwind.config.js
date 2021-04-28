@@ -25,7 +25,9 @@ module.exports = {
     },
     variants: {
         extend: {
-            display: ['group-hover']
+            display: ['group-hover'],
+            ringColor: ['focus-within'],
+            ringWidth: ['focus-within'],
         },
     },
     plugins: [

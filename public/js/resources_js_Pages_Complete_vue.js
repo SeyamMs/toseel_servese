@@ -431,7 +431,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["modelValue"],
+  props: ["modelValue", "grouped"],
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
     var value = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
@@ -2367,13 +2367,15 @@ __webpack_require__.r(__webpack_exports__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
-    "class": "form-input border rounded-md shadow-sm",
+    "class": [{
+      border: !$props.grouped
+    }, "form-input rounded-md shadow-sm"],
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.value = $event;
     }),
     ref: "input"
-  }, null, 512
-  /* NEED_PATCH */
+  }, null, 2
+  /* CLASS */
   )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.value]]);
 }
 

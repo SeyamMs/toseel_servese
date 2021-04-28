@@ -49,7 +49,7 @@ class AuthController extends Controller
         $request->validate([
             'role' => 'required|in:client,company,worker',
             'email' => 'required|email|unique:users',
-            'phone' => ['required', 'unique:users', 'regex:/^(010|011|012|015)([0-9]{8})$/'],
+            'phone' => ['required', 'unique:users', 'regex:/^(5|0|3|6|4|9|1|8|7)([0-9]{7})$/'],
             'password' => 'required|min:6'
         ], [
             'phone.regex' => 'يرجى ادخال رقم هاتف صحيح.',

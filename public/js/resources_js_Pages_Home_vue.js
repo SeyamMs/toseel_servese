@@ -346,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["modelValue"],
+  props: ["modelValue", "grouped"],
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
     var value = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)({
@@ -765,6 +765,16 @@ var _hoisted_6 = {
   "class": "grid gap-3 px-4 pb-4"
 };
 var _hoisted_7 = {
+  "class": "flex items-center mt-1 border rounded-md shadow-sm focus-within:border-blue-400"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "flex-shrink-0 px-4 text-gray-700"
+}, " 9665 ", -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
   "class": "p-4 bg-gray-50"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -805,17 +815,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Label, {
     "for": "phone",
     value: "رقم الجوال"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
     id: "phone",
     type: "tel",
-    "class": "block w-full mt-1",
+    dir: "ltr",
+    grouped: true,
+    "class": "block w-full shadow-none",
     modelValue: $setup.form.phone,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.form.phone = $event;
     })
   }, null, 8
   /* PROPS */
-  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputError, {
+  , ["modelValue"]), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputError, {
     message: $setup.form.errors.phone,
     "class": "mt-1"
   }, null, 8
@@ -838,7 +850,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mt-1"
   }, null, 8
   /* PROPS */
-  , ["message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
+  , ["message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
     "class": {
       'opacity-25': $setup.form.processing
     },
@@ -1862,13 +1874,15 @@ __webpack_require__.r(__webpack_exports__);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
-    "class": "form-input border rounded-md shadow-sm",
+    "class": [{
+      border: !$props.grouped
+    }, "form-input rounded-md shadow-sm"],
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.value = $event;
     }),
     ref: "input"
-  }, null, 512
-  /* NEED_PATCH */
+  }, null, 2
+  /* CLASS */
   )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.value]]);
 }
 

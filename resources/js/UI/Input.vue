@@ -1,6 +1,7 @@
 <template>
 	<input
-		class="form-input border rounded-md shadow-sm"
+		:class="{ border: !grouped }"
+		class="form-input rounded-md shadow-sm"
 		v-model="value"
 		ref="input"
 	/>
@@ -10,7 +11,7 @@
 import { ref, computed } from "vue";
 
 export default {
-	props: ["modelValue"],
+	props: ["modelValue", "grouped"],
 
 	setup(props, { emit }) {
 		const value = computed({

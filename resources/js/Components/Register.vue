@@ -22,12 +22,22 @@
 
 				<div>
 					<Label for="phone" value="رقم الجوال" />
-					<Input
-						id="phone"
-						type="tel"
-						class="block w-full mt-1"
-						v-model="form.phone"
-					/>
+					<div
+						class="flex items-center mt-1 border rounded-md shadow-sm focus-within:border-blue-400"
+					>
+						<Input
+							id="phone"
+							type="tel"
+							dir="ltr"
+							:grouped="true"
+							class="block w-full shadow-none"
+							v-model="form.phone"
+						/>
+						<span class="flex-shrink-0 px-4 text-gray-700">
+							9665
+						</span>
+					</div>
+
 					<InputError :message="form.errors.phone" class="mt-1" />
 				</div>
 
