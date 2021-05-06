@@ -23,11 +23,13 @@ class User extends Authenticatable implements HasMedia
         //============================ 2nd step
         'region_id', 'city_id', 'national_id', 'company_name', 'commercial_registration', 'activity', 'origin', 'website',
         //============================ 3rd step
-        'porter', 'cattle', 'fodder', 'driver', 'teacher', 'porters', 'cattles', 'fodders', 'drivers', 'teachers',
+        'jobs', 'workers',
         //============================ 4th step
-        'vehicle_type', 'vehicle_model', 'vehicle_license', 'driver_name', 'driver_id',
+        'vehicle', 'not_owner', 'driver',
         //============================ steps tracker
-        'step'
+        'step',
+        //============================ confirmations
+        'conditions_accepted_at',
     ];
 
     /**
@@ -46,11 +48,38 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $casts = [
-        'porter' => 'boolean',
-        'cattle' => 'boolean',
-        'fodder' => 'boolean',
-        'driver' => 'boolean',
-        'teacher' => 'boolean',
-        'email_verified_at' => 'datetime',
+        'saudi' => 'boolean',
+        'jobs' => 'json',
+        'workers' => 'json',
+        'vehicle' => 'json',
+        'not_owner' => 'boolean',
+        'driver' => 'json',
     ];
+
+    protected $appends = [
+        'iqama',
+        'has_website',
+        'vehicle_license',
+        'driver_id',
+    ];
+
+    public function getIqamaAttribute()
+    {
+        return !is_null($this->national_id);
+    }
+
+    public function getHasWebsiteAttribute()
+    {
+        return !is_null($this->website);
+    }
+
+    public function getVehicleLicenseAttribute()
+    {
+        return $this->getFirstMediaUrl('vehicle_license');
+    }
+
+    public function getDriverIdAttribute()
+    {
+        return $this->getFirstMediaUrl('driver_id');
+    }
 }

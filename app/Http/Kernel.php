@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'complete.profile' => \App\Http\Middleware\CompleteProfile::class,
         'completed.profile' => \App\Http\Middleware\CompletedProfile::class,
+        'accept.conditions' => \App\Http\Middleware\AcceptConditions::class,
     ];
 }

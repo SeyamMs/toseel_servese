@@ -1,0 +1,24 @@
+/* width */
+.scrolling-area::-webkit-scrollbar {
+    @apply w-2 h-2;
+}
+
+.scrolling-area-sm::-webkit-scrollbar {
+    @apply w-1 h-1;
+}
+
+/* Track */
+.scrolling-area::-webkit-scrollbar-track,
+.scrolling-area-sm::-webkit-scrollbar-track {
+    @apply bg-gray-700 rounded-full;
+}
+
+/* Handle */
+.scrolling-area::-webkit-scrollbar-thumb,
+.scrolling-area-sm::-webkit-scrollbar-thumb {
+    @apply bg-gray-800 rounded-full hover:bg-gray-900;
+}
+
+.disable-scrolling {
+    @apply overflow-hidden;
+}

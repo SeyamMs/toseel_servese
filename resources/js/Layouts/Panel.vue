@@ -1,8 +1,8 @@
 <template>
 	<main class="flex flex-col min-h-screen pt-12 bg-gray-100">
 		<teleport to="head">
-			<title v-if="title">سفالاني | {{ title }}</title>
-			<title v-else>سفالاني | الادارة</title>
+			<title v-if="title">لوحة التحكم | {{ title }}</title>
+			<title v-else>لوحة التحكم</title>
 		</teleport>
 		<header class="fixed top-0 z-10 flex w-full shadow">
 			<div class="flex items-center w-56 h-12 px-5 bg-gray-800 space-s-2">
@@ -51,17 +51,78 @@
 						الاحصائيات
 					</inertia-link>
 					<inertia-link
-						:href="route('admin.dashboard')"
+						:href="route('admin.regions')"
 						class="flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800"
 						:class="{
 							'bg-gray-800': [
-								'admin.categories',
-								'admin.categories.create',
-								'admin.categories.show',
+								'admin.regions',
+								'admin.regions.create',
+								'admin.regions.show',
 							].includes(route().current()),
 						}"
 					>
-						الاقسام
+						المناطق
+					</inertia-link>
+					<inertia-link
+						:href="route('admin.cities')"
+						class="flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800"
+						:class="{
+							'bg-gray-800': [
+								'admin.cities',
+								'admin.cities.create',
+								'admin.cities.show',
+							].includes(route().current()),
+						}"
+					>
+						المدن
+					</inertia-link>
+					<inertia-link
+						:href="route('admin.users')"
+						class="flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800"
+						:class="{
+							'bg-gray-800': [
+								'admin.users',
+								'admin.users.create',
+								'admin.users.show',
+							].includes(route().current()),
+						}"
+					>
+						الاعضاء
+					</inertia-link>
+					<inertia-link
+						:href="route('admin.subscriptions')"
+						class="flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800"
+						:class="{
+							'bg-gray-800': ['admin.subscriptions'].includes(
+								route().current()
+							),
+						}"
+					>
+						الاشتراكات
+					</inertia-link>
+					<inertia-link
+						:href="route('admin.contact-us')"
+						class="flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800"
+						:class="{
+							'bg-gray-800': [
+								'admin.contact-us',
+								'admin.contact-us.create',
+								'admin.contact-us.show',
+							].includes(route().current()),
+						}"
+					>
+						رسائل اتصل بنا
+					</inertia-link>
+					<inertia-link
+						:href="route('admin.settings')"
+						class="flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800"
+						:class="{
+							'bg-gray-800': ['admin.settings'].includes(
+								route().current()
+							),
+						}"
+					>
+						الاعدادات
 					</inertia-link>
 				</div>
 			</div>
@@ -78,6 +139,8 @@
 import { Inertia } from "@inertiajs/inertia";
 
 export default {
+	props: ["title"],
+
 	setup() {
 		const logout = () => {
 			Inertia.post(route("admin.logout"));

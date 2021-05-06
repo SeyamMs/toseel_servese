@@ -96,6 +96,7 @@ export default {
 			phone: "",
 			password: "",
 		});
+
 		const register = () => {
 			form.post(route("register"), {
 				preserveScroll: true,

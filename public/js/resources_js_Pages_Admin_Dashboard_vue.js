@@ -14,6 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["title"],
   setup: function setup() {
     var logout = function logout() {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post(route("admin.logout"));
@@ -38,13 +39,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Layouts_Panel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Layouts/Panel */ "./resources/js/Layouts/Panel.vue");
+/* harmony import */ var _Layouts_Panel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/Panel */ "./resources/js/Layouts/Panel.vue");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["statistics"],
   components: {
     Layout: _Layouts_Panel__WEBPACK_IMPORTED_MODULE_0__.default
-  },
-  props: ["statistics"]
+  }
 });
 
 /***/ }),
@@ -98,12 +99,22 @@ var _hoisted_11 = {
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" الاحصائيات ");
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" الاقسام ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" المناطق ");
 
-var _hoisted_14 = {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" المدن ");
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" الاعضاء ");
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" الاشتراكات ");
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" رسائل اتصل بنا ");
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" الاعدادات ");
+
+var _hoisted_19 = {
   "class": "flex-grow w-full pt-12 md:pt-0 md:pr-56"
 };
-var _hoisted_15 = {
+var _hoisted_20 = {
   "class": "p-5"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -111,9 +122,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("main", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Teleport, {
     to: "head"
-  }, [_ctx.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("title", _hoisted_2, "سفالاني | " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.title), 1
+  }, [$props.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("title", _hoisted_2, "لوحة التحكم | " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.title), 1
   /* TEXT */
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("title", _hoisted_3, "سفالاني | الادارة"))])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("header", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("title", _hoisted_3, "لوحة التحكم"))])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("header", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
     href: _ctx.route('admin.dashboard'),
     "class": "text-white"
   }, {
@@ -159,9 +170,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "class"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: _ctx.route('admin.dashboard'),
+    href: _ctx.route('admin.regions'),
     "class": ["flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800", {
-      'bg-gray-800': ['admin.categories', 'admin.categories.create', 'admin.categories.show'].includes(_ctx.route().current())
+      'bg-gray-800': ['admin.regions', 'admin.regions.create', 'admin.regions.show'].includes(_ctx.route().current())
     }]
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -172,7 +183,77 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href", "class"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])]);
+  , ["href", "class"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: _ctx.route('admin.cities'),
+    "class": ["flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800", {
+      'bg-gray-800': ['admin.cities', 'admin.cities.create', 'admin.cities.show'].includes(_ctx.route().current())
+    }]
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_14];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "class"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: _ctx.route('admin.users'),
+    "class": ["flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800", {
+      'bg-gray-800': ['admin.users', 'admin.users.create', 'admin.users.show'].includes(_ctx.route().current())
+    }]
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_15];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "class"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: _ctx.route('admin.subscriptions'),
+    "class": ["flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800", {
+      'bg-gray-800': ['admin.subscriptions'].includes(_ctx.route().current())
+    }]
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_16];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "class"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: _ctx.route('admin.contact-us'),
+    "class": ["flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800", {
+      'bg-gray-800': ['admin.contact-us', 'admin.contact-us.create', 'admin.contact-us.show'].includes(_ctx.route().current())
+    }]
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_17];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "class"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: _ctx.route('admin.settings'),
+    "class": ["flex items-center flex-shrink-0 h-8 px-2 text-white rounded md:h-10 md:px-4 hover:bg-gray-800", {
+      'bg-gray-800': ['admin.settings'].includes(_ctx.route().current())
+    }]
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_18];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "class"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])])])]);
 }
 
 /***/ }),
@@ -190,8 +271,139 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "grid grid-cols-6 gap-4"
+};
+var _hoisted_2 = {
+  "class": "col-span-6 md:col-span-2"
+};
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" some text ");
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  "class": "text-xl text-gray-900"
+}, "المناطق", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  "class": "mt-2 bg-white rounded shadow-sm px-4 py-2"
+};
+var _hoisted_5 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_6 = {
+  "class": "text-2xl py-4"
+};
+var _hoisted_7 = {
+  "class": "col-span-6 md:col-span-2"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  "class": "text-xl text-gray-900"
+}, "المدن", -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "mt-2 bg-white rounded shadow-sm px-4 py-2"
+};
+var _hoisted_10 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_11 = {
+  "class": "text-2xl py-4"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "md:col-span-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "col-span-6 md:col-span-2"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  "class": "text-xl text-gray-900"
+}, "العملاء", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "mt-2 bg-white rounded shadow-sm px-4 py-2"
+};
+var _hoisted_16 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_17 = {
+  "class": "text-2xl py-4"
+};
+var _hoisted_18 = {
+  "class": "col-span-6 md:col-span-2"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  "class": "text-xl text-gray-900"
+}, "الشركات", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = {
+  "class": "mt-2 bg-white rounded shadow-sm px-4 py-2"
+};
+var _hoisted_21 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_22 = {
+  "class": "text-2xl py-4"
+};
+var _hoisted_23 = {
+  "class": "col-span-6 md:col-span-2"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  "class": "text-xl text-gray-900"
+}, "الافراد", -1
+/* HOISTED */
+);
+
+var _hoisted_25 = {
+  "class": "mt-2 bg-white rounded shadow-sm px-4 py-2"
+};
+var _hoisted_26 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_27 = {
+  "class": "text-2xl py-4"
+};
+var _hoisted_28 = {
+  "class": "col-span-6 md:col-span-4"
+};
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  "class": "text-xl text-gray-900"
+}, "رسائل اتصل بنا", -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
+  "class": "mt-2 bg-white rounded shadow-sm px-4 py-2"
+};
+var _hoisted_31 = {
+  "class": "flex items-center justify-around"
+};
+var _hoisted_32 = {
+  "class": "text-2xl py-4"
+};
+var _hoisted_33 = {
+  "class": "text-2xl py-4"
+};
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-xs italic"
+}, "جديدة", -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("layout");
@@ -200,7 +412,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "الاحصائيات"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.statistics.regions), 1
+      /* TEXT */
+      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.statistics.cities), 1
+      /* TEXT */
+      )])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.statistics.clients), 1
+      /* TEXT */
+      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.statistics.companies), 1
+      /* TEXT */
+      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.statistics.workers), 1
+      /* TEXT */
+      )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.statistics.messages), 1
+      /* TEXT */
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.statistics.new_messages) + " ", 1
+      /* TEXT */
+      ), _hoisted_34])])])])])];
     }),
     _: 1
     /* STABLE */

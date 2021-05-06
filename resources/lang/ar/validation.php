@@ -75,7 +75,7 @@ return [
         'array'   => 'The :attribute must not have more than :value items.',
     ],
     'max'                  => [
-        'numeric' => 'هذا الحقل مكون على الاكثر :max.',
+        'numeric' => 'هذا الحقل يجب ان لا يتجاوز :max.',
         'file'    => 'The :attribute may not be greater than :max kilobytes.',
         'string'  => 'هذا الحقل مكون على الاكثر :max حروف.',
         'array'   => 'The :attribute may not have more than :max items.',
@@ -83,7 +83,7 @@ return [
     'mimes'                => 'هذا الحقل يقبل الانواع التالية: :values فقط.',
     'mimetypes'            => 'The :attribute must be a file of type: :values.',
     'min'                  => [
-        'numeric' => 'هذا الحقل مكون على الاقل من :min.',
+        'numeric' => 'هذا الحقل يجب ان لا يقل عن :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
         'string'  => 'هذا الحقل مكون على الاقل من :min حروف.',
         'array'   => 'The :attribute must have at least :min items.',

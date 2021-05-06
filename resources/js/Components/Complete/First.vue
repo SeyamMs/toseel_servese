@@ -66,7 +66,10 @@
 						</div>
 
 						<div>
-							<Label for="bio" value="أكتب وصفا مختصرا عن نفسك" />
+							<Label
+								for="bio"
+								value="أكتب وصفا مختصرا عن نفسك (اختياري)"
+							/>
 							<Textarea
 								id="bio"
 								type="text"
@@ -113,7 +116,7 @@ import Label from "@/UI/Label";
 import Input from "@/UI/Input";
 import InputError from "@/UI/InputError";
 import Button from "@/UI/Button";
-import Textarea from "@/UI/Textarea.vue";
+import Textarea from "@/UI/Textarea";
 
 export default {
 	props: ["user"],
@@ -127,14 +130,7 @@ export default {
 	},
 
 	setup(props, { emit }) {
-		const form = useForm({
-			first_name: props.user.first_name,
-			middle_name: props.user.middle_name,
-			last_name: props.user.last_name,
-			age: props.user.age ? props.user.age : 18,
-			bio: props.user.bio,
-			saudi: props.user.saudi !== null ? props.user.saudi : true,
-		});
+		const form = useForm({ ...props.user });
 
 		const fill = () => {
 			form.post(route("first.step"), {

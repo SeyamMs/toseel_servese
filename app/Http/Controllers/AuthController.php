@@ -55,6 +55,13 @@ class AuthController extends Controller
             'phone.regex' => 'يرجى ادخال رقم هاتف صحيح.',
         ]);
 
+        if ($request->email === $request->password) {
+            $error = \Illuminate\Validation\ValidationException::withMessages([
+                'password' => ['لا يمكنك استعمال بريدك الالكتروني ككلمة مرور.'],
+            ]);
+            throw $error;
+        }
+
         $request['password'] = bcrypt($request->password); // hash the password...
         $user = User::create($request->all());
         Auth::guard('web')->login($user);

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<layout>
-			<div class="fixed w-full z-50 shadow-sm bg-white">
+			<div class="fixed w-full z-10 shadow-sm bg-white">
 				<div
 					class="flex items-center justify-between sm:justify-start h-10"
 				>
@@ -38,7 +38,7 @@
 						</a>
 						<a
 							v-smooth-scroll
-							href="#contact"
+							href="#contact-us"
 							class="flex items-center h-full px-4 text-sm text-gray-700 md:px-6 md:text-base hover:bg-gray-100"
 						>
 							تواصل معنا
@@ -109,7 +109,7 @@
 								</a>
 								<a
 									v-smooth-scroll
-									href="#contact"
+									href="#contact-us"
 									class="flex items-center px-6 py-2 text-white hover:bg-gray-700"
 								>
 									تواصل معنا
@@ -130,10 +130,48 @@
 
 					<div class="absolute bottom-6 right-8">
 						<button
+							@click="search = !search"
 							class="bg-black px-4 py-2 text-white text-2xl font-light"
 						>
 							هل انت مهتم؟
 						</button>
+
+						<teleport to="#modals">
+							<DialogModal :show="search" @close="search = false">
+								<template #title>
+									<h1>توصيل - البحث</h1>
+								</template>
+
+								<template #content>
+									<div class="">
+										<p class="mb-4 text-lg text-gray-700">
+											يبدو أنك مهتم بنا أكثر أهلا بك على
+											متن قاعدة بياناتنا
+										</p>
+										<div class="flex space-s-3">
+											<div class="flex-grow">
+												<Input
+													class="w-full"
+													placeholder="ابحث في قاعدة بياناتنا"
+												/>
+											</div>
+											<Button>
+												<Icon
+													icon="search"
+													class="w-5 h-5"
+												/>
+											</Button>
+										</div>
+									</div>
+								</template>
+
+								<template #footer>
+									<SecondaryButton @click="search = false">
+										اغلاق
+									</SecondaryButton>
+								</template>
+							</DialogModal>
+						</teleport>
 					</div>
 				</div>
 			</section>
@@ -156,8 +194,10 @@
 								alt="user"
 								class="w-48 h-48 object-scale-down"
 							/>
-							<h3 class="text-2xl my-3">معتز المشكلي</h3>
-							<p class="text-gray-600 italic">مطور ويب</p>
+							<h3 class="text-2xl my-3">كايد الشيخي</h3>
+							<p class="text-gray-600 italic">
+								المدير العام وصاحب الفكرة
+							</p>
 						</div>
 						<div
 							class="hover:shadow border rounded-md p-4 flex flex-col items-center"
@@ -167,8 +207,10 @@
 								alt="user"
 								class="w-48 h-48 object-scale-down"
 							/>
-							<h3 class="text-2xl my-3">معتز المشكلي</h3>
-							<p class="text-gray-600 italic">مطور ويب</p>
+							<h3 class="text-2xl my-3">لؤي ثاني</h3>
+							<p class="text-gray-600 italic">
+								هندسة الشبكات وإدارة الخوادم
+							</p>
 						</div>
 						<div
 							class="hover:shadow border rounded-md p-4 flex flex-col items-center"
@@ -178,8 +220,8 @@
 								alt="user"
 								class="w-48 h-48 object-scale-down"
 							/>
-							<h3 class="text-2xl my-3">معتز المشكلي</h3>
-							<p class="text-gray-600 italic">مطور ويب</p>
+							<h3 class="text-2xl my-3">شعيب انو</h3>
+							<p class="text-gray-600 italic">الدعم - التسويق</p>
 						</div>
 						<div
 							class="hover:shadow border rounded-md p-4 flex flex-col items-center"
@@ -204,11 +246,7 @@
 						<div class="p-4 flex flex-col">
 							<h2 class="my-3 text-3xl">من نحن</h2>
 							<p class="leading-relaxed text-justify my-5">
-								نحن شركة تعمل على الانترنت بالكامل متوجه إلى جلب
-								العميل لمقدم في هذه المجالات (التحميل و التنزيل
-								نقل الانعام, نقل وتوصيل الاعلاف,نقل بضائع أثاث
-								منزلي أغذية إلخ عمال الفك وتركيب) و تغطي جميع
-								مناطق المملكة. .
+								{{ $page.props.settings.about_us }}
 							</p>
 						</div>
 
@@ -222,11 +260,7 @@
 							<p
 								class="text-gray-600 leading-relaxed text-justify"
 							>
-								هذا النص هو مثال لنص يمكن أن يستبدل في نفس
-								المساحة، لقد تم توليد هذا النص من مولد النص
-								العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد
-								من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى
-								يولدها التطبيق.
+								{{ $page.props.settings.message }}
 							</p>
 						</div>
 						<div class="shadow p-4 flex flex-col">
@@ -239,11 +273,7 @@
 							<p
 								class="text-gray-600 leading-relaxed text-justify"
 							>
-								هذا النص هو مثال لنص يمكن أن يستبدل في نفس
-								المساحة، لقد تم توليد هذا النص من مولد النص
-								العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد
-								من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى
-								يولدها التطبيق.
+								{{ $page.props.settings.vision }}
 							</p>
 						</div>
 						<div class="shadow p-4 flex flex-col">
@@ -256,11 +286,7 @@
 							<p
 								class="text-gray-600 leading-relaxed text-justify"
 							>
-								هذا النص هو مثال لنص يمكن أن يستبدل في نفس
-								المساحة، لقد تم توليد هذا النص من مولد النص
-								العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد
-								من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى
-								يولدها التطبيق.
+								{{ $page.props.settings.goal }}
 							</p>
 						</div>
 					</div>
@@ -281,7 +307,7 @@
 				</div>
 			</section>
 
-			<section id="contact">
+			<section id="contact-us">
 				<div class="py-16 px-4 bg-gray-100">
 					<div class="grid grid-cols-3 gap-4">
 						<div class="p-4 flex flex-col col-span-3 md:col-span-1">
@@ -301,10 +327,12 @@
 									/>
 									<a
 										class="font-light"
-										href="https://www.google.com/maps/place/Aziziyah,+Mecca+Saudi+Arabia/@21.4157064,39.8468221,15z/data=!3m1!4b1!4m5!3m4!1s0x15c20469096c99cf:0x37ba8f982355d299!8m2!3d21.4194706!4d39.8582709"
+										:href="
+											$page.props.settings.address_link
+										"
 										target="_blank"
 									>
-										المملكة العربية السعودية، مكة، العزيزية
+										{{ $page.props.settings.address }}
 									</a>
 								</li>
 								<li class="flex items-center">
@@ -315,9 +343,9 @@
 									<a
 										dir="ltr"
 										class="font-light"
-										href="tel:966123456789"
+										:href="`tel:${$page.props.settings.phone}`"
 									>
-										+966 123456789
+										{{ $page.props.settings.phone }}
 									</a>
 								</li>
 								<li class="flex items-center">
@@ -327,9 +355,9 @@
 									/>
 									<a
 										class="font-light"
-										href="mailto:tawsil@support.com"
+										:href="`mailto:${$page.props.settings.email}`"
 									>
-										tawsil@support.com
+										{{ $page.props.settings.email }}
 									</a>
 								</li>
 							</ul>
@@ -338,7 +366,7 @@
 						<div
 							class="shadow col-span-3 md:col-span-2 p-4 flex flex-col bg-white"
 						>
-							<Contact />
+							<ContactUs />
 						</div>
 					</div>
 				</div>
@@ -362,8 +390,9 @@
 				<Icon icon="previous" class="w-5 h-5 transform -rotate-90" />
 				<span
 					class="hidden group-hover:block mr-2 text-sm font-light italic"
-					>إذهب إلى الاعلى</span
 				>
+					إذهب إلى الاعلى
+				</span>
 			</a>
 		</layout>
 	</div>
@@ -375,20 +404,29 @@ import { Inertia } from "@inertiajs/inertia";
 
 import Layout from "@/Layouts/App";
 import Icon from "@/UI/Icon";
+import DialogModal from "@/UI/DialogModal";
+import Button from "@/UI/Button";
+import Input from "@/UI/Input";
+import SecondaryButton from "@/UI/SecondaryButton";
 import Forms from "@/Components/Forms";
-import Contact from "@/Components/Contact";
+import ContactUs from "@/Components/ContactUs";
 
 export default {
 	components: {
 		Layout,
 		Icon,
+		DialogModal,
+		Input,
+		Button,
+		SecondaryButton,
 		Forms,
-		Contact,
+		ContactUs,
 	},
 
 	setup() {
 		const top = ref(false);
 		const menu = ref(false);
+		const search = ref(false);
 
 		const logout = () => {
 			Inertia.post(route("logout"));
@@ -403,9 +441,17 @@ export default {
 			window.addEventListener("resize", () => {
 				if (window.innerWidth > 639) menu.value = false;
 			});
+
+			window.addEventListener("load", () => {
+				let hash = new URL(window.location.href).hash;
+				if (hash) {
+					let hashs = document.querySelectorAll(`[href='${hash}']`);
+					if (hashs.length) hashs[0].click();
+				}
+			});
 		});
 
-		return { top, menu, logout };
+		return { top, menu, search, logout };
 	},
 };
 </script>

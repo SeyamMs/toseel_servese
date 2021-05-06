@@ -276,7 +276,7 @@ import Input from "@/UI/Input";
 import Select from "@/UI/Select";
 import InputError from "@/UI/InputError";
 import Button from "@/UI/Button";
-import Textarea from "@/UI/Textarea.vue";
+import Textarea from "@/UI/Textarea";
 import SecondaryButton from "@/UI/SecondaryButton";
 
 export default {
@@ -293,19 +293,7 @@ export default {
 	},
 
 	setup(props, { emit }) {
-		const form = useForm({
-			region_id: props.user.region_id,
-			city_id: props.user.city_id,
-			national_id: props.user.national_id,
-			company_name: props.user.company_name,
-			commercial_registration: props.user.commercial_registration,
-			iqama: false,
-			activity: props.user.activity,
-			origin: props.user.origin,
-			has_website: false,
-			website: props.user.website,
-			bio: props.user.bio,
-		});
+		const form = useForm({ ...props.user });
 
 		const fill = () => {
 			form.post(route("second.step"), {

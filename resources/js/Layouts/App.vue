@@ -1,5 +1,9 @@
 <template>
 	<main class="flex flex-col min-h-screen">
+		<teleport to="head">
+			<title v-if="title">خدمة توصيل | {{ title }}</title>
+			<title v-else>خدمة توصيل</title>
+		</teleport>
 		<article class="flex-grow">
 			<slot />
 		</article>
@@ -9,11 +13,21 @@
 					class="max-w-screen-xl mx-auto lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm"
 				>
 					<h4 class="text-xl my-3">تابعنا</h4>
-					<p class="text-sm">
-						يشكر تطبيق/موقع/شركة توصيل موقع w3.css الذي أتاح هذا
-						القالب بشكب مجاني ومفتوح المصدر وقد تمت برمجته من قبل
-						منصة شكرا لك
-					</p>
+					<div
+						class="flex items-center justify-center space-s-2 mb-6"
+					>
+						<a
+							v-for="social in $page.props.settings.socials"
+							:key="social.icon"
+							:href="social.url"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-white hover:text-gray-800 hover:bg-white w-10 h-10 flex items-center justify-center rounded"
+						>
+							<Icon :icon="social.icon" class="w-5 h-5" />
+						</a>
+					</div>
+					<p class="text-sm">{{ $page.props.settings.footer }}</p>
 				</div>
 			</div>
 		</footer>
@@ -21,7 +35,13 @@
 </template>
 
 <script>
+import Icon from "@/UI/Icon";
+
 export default {
 	props: ["title"],
+
+	components: {
+		Icon,
+	},
 };
 </script>

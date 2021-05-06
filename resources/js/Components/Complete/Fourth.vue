@@ -10,7 +10,7 @@
 							<Select
 								id="vehicle_type"
 								class="block w-full mt-1"
-								v-model="form.vehicle_type"
+								v-model="form.vehicle.type"
 							>
 								<option value="dina">دينا</option>
 								<option value="dabbab">دباب</option>
@@ -18,36 +18,41 @@
 								<option value="car">سيارة</option>
 							</Select>
 							<InputError
-								:message="form.errors.vehicle_type"
+								:message="form.errors['vehicle.type']"
 								class="mt-1"
 							/>
 						</div>
+
 						<div class="col-span-2 md:col-span-1">
 							<Label for="vehicle_model" value="الموديل" />
 							<Input
 								id="vehicle_model"
-								type="text"
+								type="number"
+								min="1999"
+								max="2040"
 								class="block w-full mt-1"
-								v-model="form.vehicle_model"
+								v-model="form.vehicle.model"
 							/>
 							<InputError
-								:message="form.errors.vehicle_model"
+								:message="form.errors['vehicle.model']"
 								class="mt-1"
 							/>
 						</div>
+
 						<div class="col-span-2 md:col-span-1">
 							<Label for="vehicle_license" value="رقم الرخصة" />
 							<Input
 								id="vehicle_license"
 								type="text"
 								class="block w-full mt-1"
-								v-model="form.vehicle_license"
+								v-model="form.vehicle.license"
 							/>
 							<InputError
-								:message="form.errors.vehicle_license"
+								:message="form.errors['vehicle.license']"
 								class="mt-1"
 							/>
 						</div>
+
 						<div class="col-span-2 md:col-span-1">
 							<Label
 								for="vehicle_license_image"
@@ -55,28 +60,28 @@
 							/>
 							<input
 								id="vehicle_license_image"
+								accept="images/*"
 								type="file"
 								class="hidden"
-								ref="vehicle_license_image"
-								@change="updateVehicleLicensePreview"
+								ref="license"
+								@change="licensePreview"
 							/>
 							<SecondaryButton
 								class="mt-1"
 								type="button"
-								@click.prevent="vehicle_license_image.click()"
+								@click.prevent="license.click()"
 							>
 								<span class="py-1"> اختيار صورة </span>
 							</SecondaryButton>
-
 							<InputError
-								:message="form.errors.vehicle_license_image"
+								:message="form.errors['vehicle.license_image']"
 								class="mt-2"
 							/>
 							<div class="mt-2">
 								<img
-									v-show="form.vehicle_license_image_preview"
+									v-show="form.license"
 									class="rounded w-64"
-									:src="form.vehicle_license_image_preview"
+									:src="form.license"
 								/>
 							</div>
 						</div>
@@ -86,13 +91,13 @@
 								<input
 									type="checkbox"
 									class="form-checkbox border rounded"
-									v-model="form.owner"
+									v-model="form.not_owner"
 								/>
-								<span class="mr-2">المستخدم هو المالك</span>
+								<span class="mr-2">المستخدم غير المالك</span>
 							</label>
 						</div>
 
-						<div class="col-span-2" v-if="!form.owner">
+						<div class="col-span-2" v-if="form.not_owner">
 							<h3 class="my-3 text-2xl">بيانات المستخدم</h3>
 							<div class="grid gap-3 grid-cols-1 md:grid-cols-3">
 								<div class="col-span-1">
@@ -104,13 +109,14 @@
 										id="driver_name"
 										type="text"
 										class="block w-full mt-1"
-										v-model="form.driver_name"
+										v-model="form.driver.name"
 									/>
 									<InputError
-										:message="form.errors.driver_name"
+										:message="form.errors['driver.name']"
 										class="mt-1"
 									/>
 								</div>
+
 								<div class="col-span-1">
 									<Label
 										for="driver_id"
@@ -120,13 +126,14 @@
 										id="driver_id"
 										type="text"
 										class="block w-full mt-1"
-										v-model="form.driver_id"
+										v-model="form.driver.id"
 									/>
 									<InputError
-										:message="form.errors.driver_id"
+										:message="form.errors['driver.id']"
 										class="mt-1"
 									/>
 								</div>
+
 								<div class="col-span-1">
 									<Label
 										for="driver_id_image"
@@ -134,30 +141,30 @@
 									/>
 									<input
 										id="driver_id_image"
+										accept="images/*"
 										type="file"
 										class="hidden"
-										ref="driver_id_image"
-										@change="updateDriverIdPreview"
+										ref="id"
+										@change="idPreview"
 									/>
 									<SecondaryButton
 										class="mt-1"
 										type="button"
-										@click.prevent="driver_id_image.click()"
+										@click.prevent="id.click()"
 									>
 										<span class="py-1"> اختيار صورة </span>
 									</SecondaryButton>
-
 									<InputError
-										:message="form.errors.driver_id_image"
+										:message="
+											form.errors['driver.id_image']
+										"
 										class="mt-2"
 									/>
 									<div class="mt-2">
 										<img
-											v-show="
-												form.driver_id_image_preview
-											"
+											v-show="form.id"
 											class="rounded w-64"
-											:src="form.driver_id_image_preview"
+											:src="form.id"
 										/>
 									</div>
 								</div>
@@ -213,62 +220,39 @@ export default {
 		SecondaryButton,
 	},
 
-	setup(props, { emit }) {
+	setup(props) {
 		const form = useForm({
-			vehicle_type: props.user.vehicle_type,
-			vehicle_model: props.user.vehicle_model,
-			vehicle_license: props.user.vehicle_license,
-			vehicle_license_image: null,
-			vehicle_license_image_preview: null,
-
-			owner: true,
-			driver_name: props.user.driver_name,
-			driver_id: props.user.driver_id,
-			driver_id_image: null,
-			driver_id_image_preview: null,
+			vehicle: { ...props.user.vehicle },
+			driver: { ...props.user.driver },
+			not_owner: false,
+			license: null,
+			id: null,
 		});
 
-		const vehicle_license_image = ref(null);
-		const driver_id_image = ref(null);
+		const license = ref(null);
+		const id = ref(null);
 
 		const fill = () => {
-			if (vehicle_license_image.value)
-				form.vehicle_license_image =
-					vehicle_license_image.value.files[0];
-			if (driver_id_image.value)
-				form.driver_id_image = driver_id_image.value.files[0];
+			if (form.license)
+				form.vehicle.license_image = license.value.files[0];
+			if (form.id) form.driver.id_image = id.value.files[0];
 
 			form.post(route("fourth.step"), { preserveScroll: true });
 		};
 
-		const updateVehicleLicensePreview = () => {
+		const licensePreview = () => {
 			const reader = new FileReader();
-
-			reader.onload = (e) => {
-				form.vehicle_license_image_preview = e.target.result;
-			};
-
-			reader.readAsDataURL(vehicle_license_image.value.files[0]);
+			reader.onload = (e) => (form.license = e.target.result);
+			reader.readAsDataURL(license.value.files[0]);
 		};
 
-		const updateDriverIdPreview = () => {
+		const idPreview = () => {
 			const reader = new FileReader();
-
-			reader.onload = (e) => {
-				form.driver_id_image_preview = e.target.result;
-			};
-
-			reader.readAsDataURL(driver_id_image.value.files[0]);
+			reader.onload = (e) => (form.id = e.target.result);
+			reader.readAsDataURL(id.value.files[0]);
 		};
 
-		return {
-			form,
-			fill,
-			vehicle_license_image,
-			driver_id_image,
-			updateVehicleLicensePreview,
-			updateDriverIdPreview,
-		};
+		return { form, fill, license, id, licensePreview, idPreview };
 	},
 };
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Settings;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -36,14 +37,17 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
+        $settings = Settings::make(storage_path('app/settings.json'));
         return array_merge(parent::share($request), [
             'auth' => function () {
                 return [
-                    'admin' => auth('admin')->check()
-                        ? array_merge(auth('admin')->user()->only('id', 'name', 'email'), ['permissions' => auth('admin')->user()->getPermissionNames()])
-                        : null,
+                    'admin' => auth('admin')->check() ? auth('admin')->user() : null,
                     'user' => auth('web')->check() ? auth('web')->user() : null,
                 ];
+            },
+
+            'settings' => function () use ($settings) {
+                return $settings->all();
             },
         ]);
     }

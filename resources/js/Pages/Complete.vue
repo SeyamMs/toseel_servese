@@ -2,6 +2,9 @@
 	<div
 		class="py-16 px-8 min-h-screen bg-gray-100 flex items-center justify-center"
 	>
+		<teleport to="head">
+			<title>خدمة توصيل | اكمل ملفك الشخصي</title>
+		</teleport>
 		<div class="w-full">
 			<div
 				class="max-w-screen-xl mx-auto lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm"
